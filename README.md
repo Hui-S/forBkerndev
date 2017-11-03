@@ -1,6 +1,6 @@
 # forBkerndev
 <h5 align = "right">Nov. 3, 2017</h5>
-This is an implementation following [Bran's kernel Development Tutorial](http://www.osdever.net/bkerndev/Docs/title.htm) , coded for learning the basic concepts of developing an OS kernel on x86 platform. </br></br></br></br></br>
+This is an implementation following [Bran's kernel Development Tutorial](http://www.osdever.net/bkerndev/Docs/title.htm), coded for learning the basic concepts of developing an OS kernel on x86 platform. </br></br></br></br></br>
 ## Before Started
 You should check out [User:Alexander/Combining Bran's Kernel Development and the Barebones Tutorials](http://wiki.osdev.org/User:Alexander/Combining_Bran%27s_Kernel_Development_and_the_Barebones_Tutorials) first if you want to follow Bkerndev directly. The tutorial was written in 2005, the tools programmers used is much different from the ones nowadays. Read the content thoroughly to avoid the happening of some mistakes.</br></br></br></br></br>
 ## Toolset
