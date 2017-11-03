@@ -74,6 +74,7 @@ void outportb (unsigned short _port, unsigned char _data)
 void main()
 {
     /* You would add commands after here */
+    gdt_install();
     init_video();
     puts("Hello, world!\n");
 

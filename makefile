@@ -15,10 +15,12 @@ KERNEL = $(BinDIR)/kernel.bin
 STARTO = $(ObjDIR)/start.o
 MAINO = $(ObjDIR)/main.o
 SCRNO = $(ObjDIR)/scrn.o
+GDTO = $(ObjDIR)/gdt.o
 
 STARTASM = $(SourceDIR)/start.asm
 MAINC = $(SourceDIR)/main.c
 SCRNC = $(SourceDIR)/scrn.c
+GDTC = $(SourceDIR)/gdt.c
 
 GRUBCFG = $(DIR)/grub.cfg
 
@@ -48,7 +50,7 @@ buildimage:
 
 build: $(KERNEL)
 
-$(KERNEL): $(STARTO) $(MAINO) $(SCRNO)
+$(KERNEL): $(STARTO) $(MAINO) $(SCRNO) $(GDTO)
 	$(LD) $(LDFLAGS) -o $@ $^
 
 $(STARTO): $(STARTASM)
@@ -58,4 +60,7 @@ $(MAINO): $(MAINC)
 	$(CC) $(CFLAGS) -o $@ $<
 
 $(SCRNO): $(SCRNC)
+	$(CC) $(CFLAGS) -o $@ $<
+
+$(GDTO): $(GDTC)
 	$(CC) $(CFLAGS) -o $@ $<
