@@ -1,18 +1,18 @@
-#forBkerndev#
+#forBkerndev
 <h5 align = "right">Nov. 3, 2017</h5>
 This is an implementation following [Bran's kernel Development Tutorial](http://www.osdever.net/bkerndev/Docs/title.htm), coded for learning the basic concepts of developing an OS kernel on x86 platform. </br></br></br></br></br>
-##Before Started##
+##Before Started
 You should check out [User:Alexander/Combining Bran's Kernel Development and the Barebones Tutorials](http://wiki.osdev.org/User:Alexander/Combining_Bran%27s_Kernel_Development_and_the_Barebones_Tutorials) first if you want to follow Bkerndev directly. The tutorial was written in 2005, the tools programmers used is much different from the ones nowadays. Read the content thoroughly to avoid the happening of some mistakes.</br></br></br></br></br>
-##Toolset##
+##Toolset
 This program is built on Ubuntu 16.04 LTS 32bit, with GCC 5.4.0, nasm 2.11.08 and GNU ld 2.26.1. Kernel runs on [Bochs](http://bochs.sourceforge.net/)  2.6.9.</br></br></br></br></br>
 ##Create a grub-based bootable hard-drive image##
 **This part is basically a copy of [GRUB - OSDev Wiki](http://wiki.osdev.org/GRUB), with a little difference. You can visit the page and simply skip this section, if you wish to get more understanding about GRUB or make a bootable floppy image for instance. If you want to start your kernel running quickly, follow the shell commands below.**
 
-###1. Create a new disk image####
+###1. Create a new disk image
 Create new disk image file
 `$ dd if=/dev/zero of=disk.img bs=512 count=131072`  
 
-###2.Create an DOS partition with bootable entry###
+###2.Create an DOS partition with bootable entry
 1. Enter the following shell command:  
 `$ fdisk disk.img`</br>  
 2. Add new partition, starting at 1MB (2048th sector). This is more space than GRUB actually needs.   
