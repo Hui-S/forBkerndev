@@ -77,6 +77,8 @@ void main()
     gdt_install();
     idt_install();
     isrs_install();
+    irq_install();
+    __asm__ __volatile__ ("sti");
     
     init_video();
     puts("Hello, world!\n");
