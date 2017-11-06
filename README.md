@@ -1,4 +1,5 @@
-#forBkerndev
+# forBkerndev
+#### Nov. 3, 2017
 
 This is an implementation following [Bran's kernel Development Tutorial](http://www.osdever.net/bkerndev/Docs/title.htm), coded for learning the basic concepts of developing an OS kernel on x86 platform. </br></br></br></br></br>
 ## Before Started
@@ -13,9 +14,9 @@ Create new disk image file
 `$ dd if=/dev/zero of=disk.img bs=512 count=131072`  
 
 ### 2.Create an DOS partition with bootable entry
-1. Enter the following shell command:  
-`$ fdisk disk.img`</br>  
-2. Add new partition, starting at 1MB (2048th sector). This is more space than GRUB actually needs.   
+#### 1. Enter the following shell command:  
+`$ fdisk disk.img`</br>  
+#2. Add new partition, starting at 1MB (2048th sector). This is more space than GRUB actually needs.    
 Enter the following commands: `n`->`p`->`1`->`(Enter, use default)`->`(Enter, use default)`.  
 Enter `a` to make it bootable.  
 Enter `w` to wite the changes to the image.</br>  
