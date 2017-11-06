@@ -7,7 +7,7 @@ You should check out [User:Alexander/Combining Bran's Kernel Development and the
 ## Toolset
 This program is built on Ubuntu 16.04 LTS 32bit, with GCC 5.4.0, nasm 2.11.08 and GNU ld 2.26.1. Kernel runs on [Bochs](http://bochs.sourceforge.net/)  2.6.9.</br></br></br></br></br>
 ## Create a grub-based bootable hard-drive image
-**This part is basically a copy of [GRUB - OSDev Wiki](http://wiki.osdev.org/GRUB), with a little difference. You can visit the page and simply skip this section, if you wish to get more understanding about GRUB or make a bootable floppy image for instance. If you want to start your kernel running quickly, follow the shell commands below.**
+**This part is basically a copy of [GRUB - OSDev Wiki](http://wiki.osdev.org/GRUB), with a little difference. You can visit the original page and simply skip this section, if you wish to get more understanding about GRUB or make a bootable floppy image for instance. Or, if you just want to get your kernel run as soon as possible, follow the shell commands below.**
 
 ### 1. Create a new disk image
 Create new disk image file
@@ -32,6 +32,7 @@ Enter `w` to wite the changes to the image.</br>
  #### 6. Install GRUB using grub-install  
  `sudo grub-install --root-directory=/mnt --no-floppy --modules="normal part_msdos ext2 multiboot" /dev/loop0`  
  If you mistyped /dev/loop1 (pointing on your partition) instead of /dev/loop0 (pointing on your MBR), you would receive message that grub-install can't use 'embedding' (because there's no space for it) and that it would like to use 'block lists', which are not recomended.  
+     
  Don't forget to flush the filesystem buffers when manipulating with files on mounted disk image. On a Unix-like system, this can be simply done by executing the sync program in your shell. </br></br></br></br></br>
 ## Compilation and Run
 Make sure the following directories are in existance: **bin** and **obj**. Then open the shell, switch to the current directory, type `make` or `make all` to compile. You can also use `make image` to copy your kernel into the image automatically after build, as long as the **hd**   directory exists.
