@@ -75,10 +75,13 @@ void main()
 {
     /* You would add commands after here */
     gdt_install();
+    idt_install();
+    isrs_install();
+    
     init_video();
     puts("Hello, world!\n");
 
-
+    
     /* ...and leave this loop in. There is an endless loop in
     *  'start.asm' also, if you accidentally delete this next line */
     for (;;);

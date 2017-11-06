@@ -17,12 +17,14 @@ MAINO = $(ObjDIR)/main.o
 SCRNO = $(ObjDIR)/scrn.o
 GDTO = $(ObjDIR)/gdt.o
 IDTO = $(ObjDIR)/idt.o
+ISRSO = $(ObjDIR)/isrs.o
 
 STARTASM = $(SourceDIR)/start.asm
 MAINC = $(SourceDIR)/main.c
 SCRNC = $(SourceDIR)/scrn.c
 GDTC = $(SourceDIR)/gdt.c
 IDTC = $(SourceDIR)/idt.c
+ISRSC = $(SourceDIR)/isrs.c
 
 GRUBCFG = $(DIR)/grub.cfg
 
@@ -52,7 +54,7 @@ buildimage:
 
 build: $(KERNEL)
 
-$(KERNEL): $(STARTO) $(MAINO) $(SCRNO) $(GDTO) $(IDTO)
+$(KERNEL): $(STARTO) $(MAINO) $(SCRNO) $(GDTO) $(IDTO) $(ISRSO)
 	$(LD) $(LDFLAGS) -o $@ $^
 
 $(STARTO): $(STARTASM)
@@ -68,4 +70,7 @@ $(GDTO): $(GDTC)
 	$(CC) $(CFLAGS) -o $@ $<
 
 $(IDTO): $(IDTC)
+	$(CC) $(CFLAGS) -o $@ $<
+
+$(ISRSO): $(ISRSC)
 	$(CC) $(CFLAGS) -o $@ $<

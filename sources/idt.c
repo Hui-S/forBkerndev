@@ -37,11 +37,22 @@ void idt_set_gate(unsigned char num, unsigned long base, unsigned short sel, uns
     *  storing them in idt[num].base_hi and base_lo. The rest of the
     *  fields that you must set in idt[num] are fairly self-
     *  explanatory when it comes to setup */
+
+    /*
     idt[num].base_lo = (unsigned short) (base & (unsigned short) 0xffff);
     idt[num].sel = sel;
     idt[num].always0 = 0;
     idt[num].flags = flags;
     idt[num].base_hi = (unsigned short) ((base & (unsigned short) 0xffff0000) >> 16);
+    */
+
+    //Example Codes:
+    idt[num].base_lo = (base & 0xFFFF);
+    idt[num].base_hi = (base >> 16) & 0xFFFF;
+
+    idt[num].sel = sel;
+    idt[num].always0 = 0;
+    idt[num].flags = flags;
 }
 
 /* Installs the IDT */
