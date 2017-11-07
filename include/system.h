@@ -33,4 +33,9 @@ extern void irq_install_handler(int irq, void (*handler)(struct regs *r));
 void irq_uninstall_handler(int irq);
 extern void irq_install();
 
+extern void timer_phase(int hz);
+extern void timer_wait(int ticks);
+extern void timer_install();
+
+
 #endif

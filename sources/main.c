@@ -78,6 +78,8 @@ void main()
     idt_install();
     isrs_install();
     irq_install();
+    timer_phase(100);
+    timer_install();
     __asm__ __volatile__ ("sti");
     
     init_video();

@@ -19,6 +19,7 @@ GDTO = $(ObjDIR)/gdt.o
 IDTO = $(ObjDIR)/idt.o
 ISRSO = $(ObjDIR)/isrs.o
 IRQO = $(ObjDIR)/irq.o
+TIMERO = $(ObjDIR)/timer.o
 
 STARTASM = $(SourceDIR)/start.asm
 MAINC = $(SourceDIR)/main.c
@@ -27,6 +28,7 @@ GDTC = $(SourceDIR)/gdt.c
 IDTC = $(SourceDIR)/idt.c
 ISRSC = $(SourceDIR)/isrs.c
 IRQC = $(SourceDIR)/irq.c
+TIMERC = $(SourceDIR)/timer.c
 
 GRUBCFG = $(DIR)/grub.cfg
 
@@ -56,7 +58,7 @@ buildimage:
 
 build: $(KERNEL)
 
-$(KERNEL): $(STARTO) $(MAINO) $(SCRNO) $(GDTO) $(IDTO) $(ISRSO) $(IRQO)
+$(KERNEL): $(STARTO) $(MAINO) $(SCRNO) $(GDTO) $(IDTO) $(ISRSO) $(IRQO) $(TIMERO)
 	$(LD) $(LDFLAGS) -o $@ $^
 
 $(STARTO): $(STARTASM)
@@ -78,4 +80,7 @@ $(ISRSO): $(ISRSC)
 	$(CC) $(CFLAGS) -o $@ $<
 
 $(IRQO): $(IRQC)
+	$(CC) $(CFLAGS) -o $@ $<
+
+$(TIMERO): $(TIMERC)
 	$(CC) $(CFLAGS) -o $@ $<
