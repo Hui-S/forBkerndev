@@ -31,34 +31,16 @@ void timer_wait(int ticks)
 *  been smoking something funky */
 void timer_handler(struct regs *r)
 {
-    int mask, tmp1, tmp2, zeroflag;
-    const int maskinit = 100000000;
     /* Increment our 'tick count' */
     timer_ticks++;
 
-    /* Every 18 clocks (approximately 1 second), we will
+    /* Every 100 clocks (approximately 1 second), we will
     *  display a message on the screen */
     if (timer_ticks % 100 == 0)
     {
         ++seconds;
-
-        mask = maskinit;
-        zeroflag = 0;
-        tmp1 = seconds;
-        while(mask != 0) {
-            tmp2 = tmp1 / mask;
-            if(tmp2 != 0) {
-                putch(tmp2 + '0' - 0);
-                if(!zeroflag)
-                    zeroflag = 1;
-            }
-            else if(zeroflag) //zeroflag == tru && tmp2 == 0
-                putch('0');
-
-            tmp1 %= mask;
-            mask /= 10;
-        }
-        puts(" second(s) has passed.\n");
+		putint(seconds);
+		puts(" second(s) has passed.\n");
     }
 }
 

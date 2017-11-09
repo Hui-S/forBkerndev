@@ -21,6 +21,7 @@ extern void outportb (unsigned short _port, unsigned char _data);
 extern void cls();
 extern void putch(unsigned char c);
 extern void puts(unsigned char *str);
+extern void putint(int i);
 extern void settextcolor(unsigned char forecolor, unsigned char backcolor);
 extern void init_video();
 extern void gdt_set_gate(int num, unsigned long base, unsigned long limit, unsigned char access, unsigned char gran);
@@ -36,6 +37,8 @@ extern void irq_install();
 extern void timer_phase(int hz);
 extern void timer_wait(int ticks);
 extern void timer_install();
+
+extern void keyboard_install();
 
 
 #endif

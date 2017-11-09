@@ -50,6 +50,37 @@ int strlen(const char *str)
     return i;
 }
 
+void putint(int i) {
+	int d, mask = 1000000000, zeroflag = 0;
+	
+	if(i == 0) {
+		putch('0');
+		return;
+	}
+	else if(i == -2147483648) {
+		puts("-2147483648");
+		return;
+	}
+	else if(i < 0) {
+		i = -i;
+		putch('-');
+	}
+
+	while(mask != 0) {
+		d = i / mask;
+		if(d != 0) {
+			putch(d + '0' - 0);
+			if(!zeroflag)
+				zeroflag = 1;
+		}
+		else if(zeroflag) //zeroflag == true && d == 0
+			putch('0');
+
+		i %= mask;
+		mask /= 10;
+	}
+}
+
 /* We will use this later on for reading from the I/O ports to get data
 *  from devices such as the keyboard. We are using what is called
 *  'inline assembly' in these routines to actually do the work */
@@ -80,6 +111,7 @@ void main()
     irq_install();
     timer_phase(100);
     timer_install();
+	keyboard_install();
     __asm__ __volatile__ ("sti");
     
     init_video();
